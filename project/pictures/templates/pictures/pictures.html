@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{% endblock %}
+
+
+{% block body %}
+
+<div class="container">
+  <div class="content">
+    <table>
+      <thead>
+        <tr>
+          <td>Id°</td>
+          <td>Nom</td>
+          <td>Résolution</td>
+          <td>Taille</td>
+          <td>Ajouter</td>
+        </tr>
+      </thead>
+      <tbody>
+        {% for image in objects %}
+        <tr>
+          <td>{{image.pk}}</td>
+          <td>Name</td>
+          <td> {{image.getResolution}}</td>
+          <td>Taille</td>
+          <td>{{image.date}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+
+{% endblock %}

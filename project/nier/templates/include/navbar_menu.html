@@ -1,0 +1,23 @@
+{% load %}
+<ul class="navbar-nav mb-0">
+  {% block navbar-nav-inner %}
+  <li class=" nav-item">
+    {% url 'nier:home' as url %}
+    <a class="btn nav-link {% if request.path == url %} nav-active {% endif %}" href="{{ url }}">
+      <i class="nav-icon icon-speedometer"></i> Menu
+    </a>
+  </li>
+  <li class=" nav-item">
+    {% url 'pictures:list' as url %}
+    <a class="btn nav-link {% if request.path == url %} nav-active {% endif %}" href="{{ url }}">
+      <i class="nav-icon icon-clock"></i> Images
+    </a>
+  </li>
+
+  <li class=" nav-item">
+    <a class="btn nav-link" href="/admin">
+      <i class="nav-icon icon-clock"></i> Admin
+    </a>
+  </li>
+  {% endblock navbar-nav-inner %}
+</ul>
