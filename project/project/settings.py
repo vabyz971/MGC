@@ -14,8 +14,7 @@ from pathlib import Path
 gettext = lambda s: s
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(
-    os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -41,7 +40,7 @@ DJANGO_APPS = [
 
 EXTERNAL_APPS = ['sass_processor', 'easy_thumbnails']
 
-MGC_APPS = ['nier', 'pictures']
+MGC_APPS = ['pictures', 'nierInterface', 'dashboard']
 
 if os.getenv('DJANGO_APPS', '') != '':
     DJANGO_APPS += os.getenv('DJANGO_APPS').split(',')
@@ -154,3 +153,13 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 SITE_ID = 1
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": os.getenv('REDIS_LOCATION', 'redis://localhost:6379/0'),
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}

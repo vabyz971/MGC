@@ -1,38 +1,29 @@
-{% extends "base.html" %}
-{% load static %}
+{% extends "dashboard/dashboard.html" %}
+{% load static thumbnail %}
+{% block content-inner %}
 
-{% block title %}{% endblock %}
+{% block head %}
 
-
-{% block body %}
-
-<div class="container">
-  <div class="content">
-    <table>
-      <thead>
-        <tr>
-          <td>Id°</td>
-          <td>Nom</td>
-          <td>Résolution</td>
-          <td>Taille</td>
-          <td>Ajouter</td>
-        </tr>
-      </thead>
-      <tbody>
-        {% for image in objects %}
-        <tr>
-          <td>{{image.pk}}</td>
-          <td>Name</td>
-          <td> {{image.getResolution}}</td>
-          <td>Taille</td>
-          <td>{{image.date}}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-
-  </div>
-</div>
-
+<script src="{% static 'js/bodyScrollLock.es6.js' %}" type="module" defer></script>
+<script src="{% static 'js/lightbox.js' %}" type="module" defer charset="utf-8"></script>
 
 {% endblock %}
+
+
+<div class="container">
+  <div class="content grid">
+
+    {% for item in items %}
+    {% if item.image %}
+    {% thumbnail item.image '200x150' as thumb %}
+    <a href="{{ item.image.url }}">
+      <img src="{{ thumb.url }}" alt="" width="{{ thumb.width }}" height="{{ thumb.height }}">
+    </a>
+    {% endif %}
+    {% endfor %}
+
+  </div>
+
+</div>
+
+{% endblock content-inner %}

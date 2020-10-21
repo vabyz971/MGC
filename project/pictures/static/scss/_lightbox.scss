@@ -1,0 +1,95 @@
+// @Author: Jahleel Lacascade <jahleel>
+// @Date:   2020-10-21T11:00:37-04:00
+// @Email:  vabyz971@gmail.com
+// @Last modified by:   jahleel
+// @Last modified time: 2020-10-21T16:43:56-04:00
+// @License: GPLv3
+
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
+  z-index: 10;
+  overflow: auto;
+  animation: lightboxIn 0.5s;
+  transition: opacity 0.3s;
+}
+
+.lightbox.fadeOut {
+  opacity: 0;
+}
+
+.lightbox__close {
+  border: none;
+  width: 30px;
+  height: 30px;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 12;
+  background: url("../../media/img/lightbox/close.svg") center center / 100% 100% no-repeat transparent;
+}
+
+.lightbox__next,
+.lightbox__prev {
+  border: none;
+  background: url("../../media/img/lightbox/arrow.svg") center center / 30px 30px no-repeat;
+  width: 80px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin-top: -14px;
+  z-index: 11;
+  cursor: pointer;
+}
+
+.lightbox__prev {
+  right: auto;
+  left: 0;
+  transform: rotate(180deg);
+}
+
+.lightbox button {
+  opacity: 0.5;
+  cursor: pointer;
+  transition: opacity 0.3s;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.lightbox__container {
+  margin-left: 80px;
+  margin-right: 80px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    max-width: 100%;
+    height: auto;
+    animation: lightboxIn 0.7s;
+  }
+}
+
+.lightbox__loader {
+  width: 38px;
+  height: 38px;
+  opacity: 0.5;
+  background: url("../../media/img/lightbox/loader.svg") center center no-repeat;
+}
+@keyframes lightboxIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
