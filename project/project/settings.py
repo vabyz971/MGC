@@ -38,7 +38,7 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
 ]
 
-EXTERNAL_APPS = ['sass_processor', 'easy_thumbnails']
+EXTERNAL_APPS = ['sass_processor', 'easy_thumbnails', 'crispy_forms']
 
 MGC_APPS = ['pictures', 'nierInterface', 'dashboard']
 

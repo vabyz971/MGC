@@ -9,10 +9,10 @@
 
 {% endblock %}
 
-
 <div class="container">
+  {% url 'pictures:add' as url %}
+  <a class="" href="{{url}}" data-target="{{url}}#modal" data-toggle="modal">Ajouter une image</a>
   <div class="content grid">
-
     {% for item in items %}
     {% if item.image %}
     {% thumbnail item.image '200x150' as thumb %}
